@@ -68,7 +68,7 @@
       command: "init"
     };
 
-  //  timeline.push(pavlovia_init);
+    timeline.push(pavlovia_init);
 
 
 
@@ -87,7 +87,7 @@
       allow_backward: false
     };
 
-  //  timeline.push(LOI);
+    timeline.push(LOI);
 
 
     //function to make sure consent box is clicked before proceeding
@@ -110,7 +110,7 @@
       check_fn: check_consent
     };
 
-    //timeline.push(consent_trial);
+    timeline.push(consent_trial);
 
 
     /**************************/
@@ -203,7 +203,7 @@
       timeline: [induction_play_nonspeech1, induction_play_nonspeech2, transition],
       timeline_variables: nonsp_timelinevars,
       randomize_order: true,
-      repetitions: 5
+      repetitions: 2
     };
 
     var nonspeech_procedure_final = {
@@ -277,8 +277,8 @@
 
         var induction_judgement = {
           type: 'html-button-response',
-          stimulus: 'Did the two sounds match?',
-          choices: ['Yes, they are a pair', 'No, they are not a pair'],
+          stimulus: 'Are the two sounds a <b>matched pair</b>?',
+          choices: ['Yes, they are a matched pair', 'No, they are not a matched pair'],
           data:
             {designation: 'induction',
             sound1: jsPsych.timelineVariable('sound1'),
@@ -876,11 +876,11 @@
       command: "finish"
     };
 
-  //  timeline.push(pavlovia_close);
+    timeline.push(pavlovia_close);
 
 
     //Final Landing Page
-    var surveylink = "https://uwo.eu.qualtrics.com/jfe/form/SV_eM6GpV2EwU5DWOa?SUBJID=" + identifier + "&id=%SURVEY_CODE%"; //survey link that includes participant ID
+    var surveylink = "https://uwo.eu.qualtrics.com/jfe/form/SV_8iuexlbBkTkhz9k?SUBJID=" + identifier + "&id=%SURVEY_CODE%"; //survey link that includes participant ID
     var final_page = {
       type: 'html-keyboard-response',
       stimulus: '<p>Thank you for your answers. This concludes the main part of the study.</p>' +
