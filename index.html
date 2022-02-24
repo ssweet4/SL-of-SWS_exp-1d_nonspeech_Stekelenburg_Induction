@@ -399,24 +399,17 @@
     var soundperception = {
       type: 'survey-text',
       questions: [{
-        prompt: "During this study you heard streams of sounds. Please describe the sounds that you heard (e.g., alien sounds, robotic noises).",
+        prompt: "During this study you heard streams of sounds. Please describe the sounds that you heard in the streams (e.g., alien sounds, robotic noises).",
         rows: 5,
         columns: 40
       }, ]
     };
 
     ///Add Additional Questions////
-    var speech_followup_01 = {
-      type: 'html-button-response',
-      stimulus: "<p>During the study you listened to a stream of nonsense sounds.</p><p>Did you perceive this stream as containing syllables that sound like those found in speech (e.g. 'ta' or 'ru')?</p>",
-      choices: ["<b>No</b></br>the stream did not sound like it </br>contained speech-like syllables", "<b>Yes</b></br>the stream did sound like it </br>contained speech-like syllables"],
-      data: {designation: 'q-soundlikespeech-2afc'},
-      post_trial_gap: 250
-    };
 
     var speech_followup_02 = {
       type: 'html-slider-response',
-      stimulus: "<p>Using the slider, please rate the extent to which you perceived the sounds as speech-like syllables</p><p>(1 corresponds to <em>the sounds did not sound like syllables found in speech at all</em>)</p><p>(10 corresponds to <em>I could clearly hear the sounds as syllables found in speech)</em></p>",
+      stimulus: "<p>Using the slider, please rate how often you perceived the sounds as containing syllables that sound like those found in speech (e.g. 'ne' or 'mu').</p><p>(1 corresponds to <em>the sounds never sounded like syllables found in speech</em>)</p><p>(10 corresponds to <em>the sounds always sounded like syllables found in speech)</em></p>",
       min: 1,
       max: 10,
       slider_start: 5,
@@ -430,7 +423,7 @@
       {
       prompt: "At what point during the study did you begin to perceive the stream as containing speech-like syllables?",
       name: 'timecourseSpeech',
-      options: ["<b>During the first task:</b> When you either (a) indicated whether the sound was to the right or to the left, <b>or</b> (b) indicated which written syllable best matched the sound played", "<b>During the second task:</b> When listening to the stream of sounds for 12 minutes" , "<b>During the third task:</b> When listening to short sounds and rating how familiar they sounded", "<b>During the fourth task:</b> When listening to short sequences of sounds and listening for a target sound", "I never heard the sounds as speech."],
+      options: ["<b>During the first task:</b> When judging whether two sounds were a <b>matched pair</b>", "<b>During the second task:</b> When listening to the stream of sounds for 4 minutes" , "<b>During the third task:</b> When listening to short sounds and rating how familiar they sounded", "<b>During the fourth task:</b> When listening to short sequences of sounds and listening for a target sound", "I never heard the sounds as speech."],
       required: false
     }],
     data: {designation: 'q-soundlikespeech-timecourse'}
@@ -565,7 +558,7 @@
     };
 
     var transcription_procedure_final = {
-      timeline: [soundperception, speech_followup_01, speech_followup_02, speech_followup_03, transcription_instruct, transcription_procedure]
+      timeline: [soundperception, speech_followup_02, speech_followup_03, transcription_instruct, transcription_procedure]
     };
 
     timeline.push(transcription_procedure_final);
@@ -853,7 +846,7 @@
         var csvData = jsPsych.data.get().csv(); //this is the csv data
         console.log(csvData);
         var formData = {
-          exp: "SL_NONSPEECH",
+          exp: "SL_SWS_NONSPEECH",
           subj: identifier,
           results: csvData
         };
